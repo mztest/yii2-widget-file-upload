@@ -1,0 +1,29 @@
+{
+    "name": "mztest/yii2-widget-upload-oss",
+    "description": "A widget for uploading files to AliYun OSS",
+    "homepage": "https://github.com/mztest/yii2-widget-upload-oss",
+    "require": {
+        "yiisoft/yii2": "^2.0",
+        "yiisoft/yii2-bootstrap": "^2.0",
+        "bower-asset/blueimp-file-upload": "~9.9"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Guo Xiaosong",
+            "email": "mztester@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "mztest\\upload\\": "src"
+        }
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
