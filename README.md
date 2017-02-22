@@ -1,5 +1,6 @@
 # yii2-widget-upload
-A widget for uploading files to your own server
+Easily upload any files to your server in [Yii Framework 2.0](https://github.com/yiisoft/yii2).
+The extension uses the [jQueryFileUpload](https://github.com/blueimp/jQuery-File-Upload).
 
 Installation
 ------------
