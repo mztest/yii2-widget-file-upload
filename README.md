@@ -27,13 +27,13 @@ Usage
     
     ```php
     public function actions()
-        {
-            return [
-                'upload' => [
-                    'class' => 'mztest\upload\actions\FileUploadAction',
-                ],
-            ];
-        }
+    {
+        return [
+            'upload' => [
+                'class' => 'mztest\upload\actions\FileUploadAction',
+            ],
+        ];
+    }
     ```
 
 2. simply use it in your code by  :
