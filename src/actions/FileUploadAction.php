@@ -36,6 +36,9 @@ class FileUploadAction extends Action
 
     public function init()
     {
+        if (strpos($this->uploadFolder, '/') !== 0) {
+            $this->uploadFolder = '/'. $this->uploadFolder;
+        }
         parent::init();
     }
 
@@ -67,7 +70,7 @@ class FileUploadAction extends Action
      */
     public function getFullUrl($uploadedFile)
     {
-        return Yii::getAlias($this->uploadBaseUrl . $this->uploadFolder . $this->getFullName($uploadedFile));
+        return Yii::getAlias($this->uploadBaseUrl . $this->getFullName($uploadedFile));
     }
 
     /**
@@ -76,7 +79,7 @@ class FileUploadAction extends Action
      */
     public function getRelativeUrl($uploadedFile)
     {
-        return $this->uploadFolder . $this->getFullName($uploadedFile);
+        return $this->getFullName($uploadedFile);
     }
 
     /**
@@ -126,7 +129,7 @@ class FileUploadAction extends Action
 
         $ext = $uploadedFile->getExtension();
         $this->fullName = $format . '.' .$ext;
-        return $this->fullName;
+        return $this->uploadFolder . $this->fullName;
     }
 
 }

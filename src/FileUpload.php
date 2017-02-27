@@ -125,7 +125,7 @@ HTML;
     protected function renderInputGroup()
     {
         $uploadButtonContent = ArrayHelper::remove($this->uploadButtonOptions, 'content', Yii::t('app', 'Select File'));
-        $uploadButtonContent .= Html::input('file', 'file', '', ['id' => $this->getUploadInputId()]);
+        $uploadButtonContent .= Html::input('file', $this->getUploadInputName(), '', ['id' => $this->getUploadInputId()]);
 
         $uploadButton = Html::tag('span', $uploadButtonContent, $this->uploadButtonOptions);
 
@@ -145,7 +145,7 @@ HTML;
     protected function initClientOptions()
     {
         $clientOptions = [
-            'autoUpload' => false,
+            'autoUpload' => true,
             'url' => $this->uploadAction,
 //            'dataType' => 'json',
 //            'acceptFileTypes' =>  new JsExpression('/(\.|\/)(gif|jpe?g|png)$/i'),
