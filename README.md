@@ -1,4 +1,4 @@
-# yii2-widget-upload
+# yii2-widget-file-upload
 Easily upload any files to your server in [Yii Framework 2.0](https://github.com/yiisoft/yii2).
 The extension uses the [jQueryFileUpload](https://github.com/blueimp/jQuery-File-Upload).
 
@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist mztest/yii2-widget-upload "*"
+php composer.phar require --prefer-dist mztest/yii2-widget-file-upload "*"
 ```
 
 or add
 
 ```
-"mztest/yii2-widget-upload": "*"
+"mztest/yii2-widget-file-upload": "*"
 ```
 
 to the require section of your `composer.json` file.
