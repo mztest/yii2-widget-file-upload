@@ -128,8 +128,8 @@ class FileUploadAction extends Action
         }
 
         $ext = $uploadedFile->getExtension();
-        $this->fullName = $format . '.' .$ext;
-        return $this->uploadFolder . $this->fullName;
+        $this->fullName = $this->uploadFolder . $format . '.' .$ext;
+        return $this->fullName;
     }
 
 }
