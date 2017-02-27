@@ -1,7 +1,7 @@
 {
-    "name": "mztest/yii2-widget-upload-oss",
-    "description": "A widget for uploading files to AliYun OSS",
-    "homepage": "https://github.com/mztest/yii2-widget-upload-oss",
+    "name": "mztest/yii2-widget-upload",
+    "description": "A widget for uploading files to your server.",
+    "homepage": "https://github.com/mztest/yii2-widget-upload",
     "require": {
         "yiisoft/yii2": "^2.0",
         "yiisoft/yii2-bootstrap": "^2.0",
