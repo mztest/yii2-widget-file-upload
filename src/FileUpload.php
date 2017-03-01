@@ -185,6 +185,8 @@ HTML;
                     lastFile = file;
                 });
             }'),
+            'fileuploadsubmit' => new JsExpression('function(e, data) {
+            }'),
             'fileuploadprogressall' => new JsExpression('function(e, data) {
                 if (e.isDefaultPrevented()) {
                     return false;
@@ -198,7 +200,7 @@ HTML;
             }'),
             'fileuploadfail' => new JsExpression('function(e, data) {
                 var that = $(this), container = that.parents("[id$=container]");
-                $(".file-console", container).empty().html("<span class=\"text-danger\">" + data.errorThrown + ": 请联系管理员!</span>");
+                $(".file-console", container).empty().html("<span class=\"text-danger\">" + data.errorThrown + "</span>");
             }'),
             'fileuploadprocessalways' => new JsExpression('function(e, data) {
                 var that = $(this), container = that.parents("[id$=container]"),
@@ -207,11 +209,28 @@ HTML;
                     $(".file-console", container).empty().html("<span class=\"text-danger\">" + file.error + "</span>");
                 }
             }'),
+            'fileuploadchunksend' => new JsExpression('function(e, data) {
+                var that = $(this), filename = that.data("filename");
+                if (filename) {
+                    if ((data.url.indexOf("?") > 0)) {
+                        data.url += "&filename=" + filename;    
+                    } else {
+                        data.url += "?filename=" + filename;
+                    }
+                }
+            }'),
+            'fileuploadchunkdone' => new JsExpression('function(e, data) {
+                var that = $(this);
+                var result = data.result;
+                var file = data.result.files[0];
+                that.data("filename", file.name);
+            }'),
             'fileuploaddone' => new JsExpression('function(e, data) {
                 var that = $(this), container = that.parents("[id$=container]");
                 var result = data.result;
                 var file = data.result.files[0];
                 $("#'.$this->options['id'].'").val(file.relativeUrl);
+                that.removeData("filename");
             }'),
         ];
 

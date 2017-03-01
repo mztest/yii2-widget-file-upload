@@ -24,6 +24,7 @@ class FileUploadAction extends Action
     public $uploadBasePath = '@webroot'; //file system path
     public $uploadBaseUrl = '@web'; //web path
 
+    protected $isChunk = false;
     /**
      * @var string
      *
@@ -51,7 +52,19 @@ class FileUploadAction extends Action
         $inputName = Yii::$app->request->get('inputName');
         $uploadedFile = UploadedFile::getInstancesByName($inputName)[0];
         if ($uploadedFile instanceof UploadedFile) {
-            $uploadedFile->saveAs($this->getFullPath($uploadedFile));
+            $this->isChunk = (boolean)(Yii::$app->request->headers->get('content-range'));
+
+            if ($this->isChunk && Yii::$app->request->get('filename')) {
+                $this->fullName = Yii::$app->request->get('filename');
+                @file_put_contents(
+                    $this->getFullPath($uploadedFile),
+                    file_get_contents($uploadedFile->tempName),
+                    FILE_APPEND
+                );
+            } else {
+                $uploadedFile->saveAs($this->getFullPath($uploadedFile));
+            }
+
             return ['files' => [
                 [
                     'name' => $this->getFullName($uploadedFile),
@@ -131,5 +144,4 @@ class FileUploadAction extends Action
         $this->fullName = $this->uploadFolder . $format . '.' .$ext;
         return $this->fullName;
     }
-
 }
